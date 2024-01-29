@@ -2,8 +2,7 @@ package com.springcore;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-
-record Person(String name, int age, Address address) { }
+import org.springframework.context.annotation.Primary;
 
 record Address(String street, String city) { }
 
@@ -25,7 +24,9 @@ public class People {
 		return new Person("Aman", 21, new Address("Main street", "Madrid"));
 	}
 	
+	//Prioritizing Person class beans for type retrieval
 	@Bean("Person2")
+	@Primary
 	public Person personMethodCall() {
 		return new Person(name(), age(), address());
 	}
