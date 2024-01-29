@@ -11,7 +11,8 @@ public class BeanClient {
 		AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext
 				                                             (People.class);
 		System.out.println(context.getBean("person"));
-		System.out.println(context.getBean("Permanent address"));
+		System.out.println(context.getBean("Person2"));
+		System.out.println(context.getBean("Person3"));
 		
 	}
 }

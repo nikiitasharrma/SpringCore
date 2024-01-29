@@ -3,7 +3,7 @@ package com.springcore;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
-record Person(String name, int age) { }
+record Person(String name, int age, Address address) { }
 
 record Address(String street, String city) { }
 
@@ -11,11 +11,31 @@ record Address(String street, String city) { }
 public class People {
 	
 	@Bean
-	public Person person() {
-		return new Person("Nikita", 22);
+	public String name() {
+		return "Nikita";
 	}
 	
-	@Bean("Permanent address")
+	@Bean
+	public int age() {
+		return 22;
+	}
+	
+	@Bean
+	public Person person() {
+		return new Person("Aman", 21, new Address("Main street", "Madrid"));
+	}
+	
+	@Bean("Person2")
+	public Person personMethodCall() {
+		return new Person(name(), age(), address());
+	}
+	
+	@Bean("Person3")
+	public Person personParameterized(String name, int age, Address address) {
+		return new Person(name, age, address);
+	}
+	
+	@Bean
 	public Address address() {
 		return new Address("Baker street", "London");
 	}
