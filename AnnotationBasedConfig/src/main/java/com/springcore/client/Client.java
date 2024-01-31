@@ -10,5 +10,8 @@ public class Client {
 		ApplicationContext context = new ClassPathXmlApplicationContext("com/springcore/student/stereoConfig.xml");
 		System.out.println(context.getBean("student"));
 		
+		//prints different hashCode everytime, since bean scope is "prototype"
+		System.out.println(context.getBean("student").hashCode());
+		System.out.println(context.getBean("student").hashCode());
 	}
 }
