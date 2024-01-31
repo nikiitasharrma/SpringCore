@@ -1,8 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xmlns:p="http://www.springframework.org/schema/p"
-  xmlns:context="http://www.springframework.org/schema/context" xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
-  http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+<beans xmlns="http://www.springframework.org/schema/beans" 
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:p="http://www.springframework.org/schema/p" 
+       xmlns:util="http://www.springframework.org/schema/util"
+       xmlns:context="http://www.springframework.org/schema/context" 
+       xsi:schemaLocation="http://www.springframework.org/schema/beans 
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/context 
+       http://www.springframework.org/schema/context/spring-context.xsd
+       http://www.springframework.org/schema/util
+       http://www.springframework.org/schema/util/spring-util.xsd">
+   
+   <!-- Standalone collections-->
+   <util:list list-class="java.util.LinkedList" id="subjects">
+	   <value>Mathematics</value>
+	   <value>English</value>
+	   <value>Physics</value> 
+	   <null/>
+   </util:list>
+   
+   <util:map map-class="java.util.HashMap" id="marksheet">
+	   <entry key="Mathematics" value="90" />
+	   <entry key="English" value="88" />
+	   <entry key="Physics" value="95" />
+   </util:map>
+   
    
    <bean class="com.springcore.student.Student" name="student">
 	   <property name="name">
@@ -10,20 +32,8 @@
 	   </property>
 	   <property name="age" value="22" />
 	   <property name="address" ref="address" />
-	   <property name="subjects">
-		   <list>
-			   <value>Mathematics</value>
-			   <value>English</value>
-			   <value>Physics</value> 
-		   </list>
-	   </property>
-	   <property name="marksheet">
-		   <map>
-			   <entry key="Mathematics" value="90" />
-			   <entry key="English" value="88" />
-			   <entry key="Physics" value="95" />
-		   </map>
-	   </property>
+	   <property name="subjects" ref="subjects" />
+	   <property name="marksheet" ref="marksheet" />
    </bean>
    
    <!-- Using p schema for setting bean properties-->
